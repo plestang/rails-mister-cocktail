@@ -1,10 +1,20 @@
-<h1>My cocktails</h1>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail.id) %></li>
-  <% end %>
-  <%= link_to 'add a cocktail', new_cocktail_path %>
+<div class="container">
+  <h1>My cocktails</h1>
+  <div class="row">
+  </div>
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                 url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category">Popular</div>
+          <div class="card-description">
+            <h2>Some stuff</h2>
+            <p>Very cool stuff, useful and smart</p>
+          </div>
+          <%= link_to cocktail.name, cocktail_path(cocktail.id), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+</div>
 
-</ul>
-<%= cl_image_tag("https://res.cloudinary.com/dyij5tnux/image/upload/v1550226915/hhwqszcemrp2gt40y0ws.jpg",
-      width: 400, height: 300, crop: :fill) %>
